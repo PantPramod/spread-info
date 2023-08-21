@@ -21,7 +21,7 @@ const Dashboard = () => {
          const {data} = await axios.post(`${baseUrl}/api/info`, {
           ...info  
          })
-         setLink(`${window.location.origin}/${data._id}`)
+         setLink(`${window.location.href}/${data._id}`)
          setShowMessage(true);
          console.log(data)     
         }catch(err){
