@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import baseUrl from '../baseUrl'
 import axios from 'axios'
-import { Link, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
     const navigate = useNavigate()
