@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import baseUrl from '../baseUrl'
 import axios from 'axios'
+import { Link, useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
+    const navigate = useNavigate()
     const [showMessage, setShowMessage] = useState(false);
     const [info, setInfo] = useState({
         name: '',
@@ -23,6 +25,7 @@ const Dashboard = () => {
          })
          setLink(`${window.location.href}/${data._id}`)
          setShowMessage(true);
+         navigate(data?._id)
          console.log(data)     
         }catch(err){
          console.log(err)        
@@ -130,6 +133,7 @@ const Dashboard = () => {
                  className='w-[90%] sm:w-[400px] bg-black text-white rounded-xl tex-white p-6'>
                      <h2>Your Link is</h2>
                      <p className='mt-4 text-xs'>{link}</p>
+                     
                      <button onClick={()=>{ navigator.clipboard.writeText(link);}} className='mx-auto  block py-2  mt-5 bg-green-600 text-white rounded-md p-3'>Copy</button>
                    
                  </div>
