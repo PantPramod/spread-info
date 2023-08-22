@@ -1,9 +1,19 @@
 import express from 'express'
+import { signup, verifyEmail, login } from '../controller/user.js'
 
 const router = express.Router()
 
 
-router.get('/', (req, res)=>res.send("User get Route"))
+
+
+
+router.post('/signup', signup)
+
+
+router.get('/verifyemail', verifyEmail)
+
+
+router.post('/login', login)
 
 
 export default router
