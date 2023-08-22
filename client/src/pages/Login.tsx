@@ -31,6 +31,7 @@ const Login = () => {
             onSubmit={submitHandler}
             className="bg-emerald-950 text-gray-300 min-h-screen"
         >
+            <ToastContainer/>
             <h1 className="text-3xl text-center p-10 pt-20">Login</h1>
             <input
                 type="text"
