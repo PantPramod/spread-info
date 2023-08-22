@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { useSearchParams } from "react-router-dom"
+import { Link, useSearchParams } from "react-router-dom"
 import baseUrl from "../baseUrl"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -27,7 +27,9 @@ const VerifyEmail = () => {
             <ToastContainer/>
             {
                 isEmailVerified &&
-                <button className="bg-[tomato] text-white px-8 py-4">Login</button>
+                <Link to="/login"> 
+                <button className="bg-red-600 text-white px-8 py-4 text-xl">Login</button>
+                </Link>
             }
 
         </div>
