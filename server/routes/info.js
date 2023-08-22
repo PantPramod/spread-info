@@ -37,5 +37,16 @@ router.post('/', async (req, res) => {
 
 })
 
+router.get("/userid/:id", async (req, res) => {
+
+    try {
+        const cards = await BusinessCard.find({ userId: req.params.id })
+        res.send(cards)
+    } catch (err) {
+        res.status(500).send({ message: err.message })
+    }
+
+})
+
 
 export default router

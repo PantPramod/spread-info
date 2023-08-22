@@ -1,9 +1,10 @@
 import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 import baseUrl from "../baseUrl"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { GlobalContext } from "./ContextProvider";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -11,6 +12,8 @@ const Login = () => {
         email: '',
         password: ''
     })
+    const { setName, setId, setEmail } = useContext(GlobalContext)
+
     const submitHandler = async (e: any) => {
         e.preventDefault()
         const { email, password } = information
@@ -20,6 +23,10 @@ const Login = () => {
             })
             console.log(data)
             toast("Logged In Successfully")
+            setName(data?.name)
+            setEmail(data?.email)
+            setId(data?.id)
+            localStorage.setItem('token', data?.token)
             navigate('/dashboard')
         } catch (err) {
             console.log(err)
@@ -31,7 +38,7 @@ const Login = () => {
             onSubmit={submitHandler}
             className="bg-emerald-950 text-gray-300 min-h-screen"
         >
-            <ToastContainer/>
+            <ToastContainer />
             <h1 className="text-3xl text-center p-10 pt-20">Login</h1>
             <input
                 type="text"

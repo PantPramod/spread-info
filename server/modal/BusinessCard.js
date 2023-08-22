@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 
 const BusnissCardSchema = new mongoose.Schema({
     name:String,
@@ -7,7 +7,8 @@ const BusnissCardSchema = new mongoose.Schema({
     position:String,
     color:String,
     address:String,
-    company:String
+    company:String,
+    userId:Schema.Types.ObjectId
 
 })
 
