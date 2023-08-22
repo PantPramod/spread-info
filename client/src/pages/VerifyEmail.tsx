@@ -24,6 +24,7 @@ const VerifyEmail = () => {
     }, [])
     return (
         <div className="bg-emerald-900 text-white flex items-center justify-center min-h-screen  ">
+            <ToastContainer/>
             {
                 isEmailVerified &&
                 <button className="bg-[tomato] text-white px-8 py-4">Login</button>
