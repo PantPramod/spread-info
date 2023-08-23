@@ -15,7 +15,7 @@ type infoType = {
     address: string,
     color: string,
     position: string,
-    varient: "dark" | 'light',
+    varient: "dark" | 'light'|'brown',
 }
 const Dashboard = () => {
     const [showMessage, setShowMessage] = useState(false);
@@ -64,8 +64,8 @@ const Dashboard = () => {
             <Header
                 name={name}
             />
-            <div className='flex w-full  h-[88vh]'>
-                <div className='w-[300px] bg-emerald-800 p-4'>
+            <div className='flex w-full  h-[88vh] '>
+                <div className='w-[300px] bg-emerald-800 overflow-x-hidden p-4 overflow-y-auto'>
                     <div className='flex justify-between items-center relative'>
                         <p className='text-gray-200 mb-2'>{name}'s Dashboard</p>
                         <button
@@ -100,7 +100,7 @@ const Dashboard = () => {
                     </div>
                     <div
                         onClick={() => { setInfo({ ...info, varient: "light", color: "white" }) }}
-                        className='-mt-20 scale-50 origin-top-left border border-black border-dashed shadow-2xl  bg-white rounded-md  min-h-[200px] p-4 relative  md:w-[500px] mx-auto cursor-pointer'>
+                        className=' -mt-20 scale-50 origin-top-left border border-black border-dashed shadow-2xl  bg-white rounded-md  min-h-[200px] p-4 relative  md:w-[500px] mx-auto cursor-pointer'>
                         <h1 className='text-center py-4 text-3xl text-blue-800 font-bold'>Company Name</h1>
 
                         <h2 className='mt-4 text-xl text-black text-center'>User Name</h2>
@@ -114,6 +114,23 @@ const Dashboard = () => {
                             <p className='text-right text-xs text-black'>mobileno</p>
                         </div>
                     </div>
+                    <div
+       onClick={() => { setInfo({ ...info, varient: "brown", color: "#06083A" }) }}
+       
+        className={`-mt-20 scale-50 origin-top-left border border-dashed shadow-2xl  bg-[#06083A] rounded-md  min-h-[200px] p-4 relative  md:w-[500px] mx-auto cursor-pointer`} >
+        <h1 className='text-center py-4 text-3xl text-blue-800 font-bold'>Company Name</h1>
+
+        <h2 className='mt-4 text-xl text-green-600 text-center'>User Name</h2>
+        <p className='mt-1 text-xl text-green-600 text-center '>Role</p>
+        <p className='text-xs text-gray-200 pb-10 w-1/2 text-center mx-auto mt-4'>
+            <strong>Address:</strong>  asa asj jks ajkshjas ajksa skajs jkas akjsas ajks
+        </p>
+        <div className='flex justify-between absolute bottom-2 left-4  right-4'>
+            <h3 className='text-right text-sm text-white'>emailadress</h3>
+
+            <p className='text-right text-xs text-white'>mobileno</p>
+        </div>
+    </div>
 
                 </div>
 

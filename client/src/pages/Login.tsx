@@ -29,7 +29,7 @@ const Login = () => {
             localStorage.setItem('token', data?.token)
             navigate('/dashboard')
         } catch (err) {
-            console.log(err)
+            toast("Wrong User Name or Password")
         }
 
     }
