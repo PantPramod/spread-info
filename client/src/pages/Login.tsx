@@ -43,7 +43,7 @@ const Login = () => {
             <input
                 type="text"
                 placeholder="Email"
-                className="border bg-transparent mx-auto block w-[30%] p-2 rounded-md"
+                className="border bg-transparent mx-auto block w-[90%] sm:w-[30%] p-2 rounded-md"
                 value={information.email}
                 onChange={(e) => setInformation({ ...information, email: e.target.value })}
 
@@ -51,7 +51,7 @@ const Login = () => {
             <input
                 type="password"
                 placeholder="Password"
-                className="mt-10 border bg-transparent mx-auto block w-[30%] p-2 rounded-md"
+                className="mt-10 border bg-transparent mx-auto block w-[90%] sm:w-[30%] p-2 rounded-md"
                 value={information.password}
                 onChange={(e) => setInformation({ ...information, password: e.target.value })}
             />

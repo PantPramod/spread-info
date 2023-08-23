@@ -7,12 +7,14 @@ import SelectUserType from "./pages/SelectUserType"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import VerifyEmail from "./pages/VerifyEmail"
+import AllCards from "./pages/Dashboard/AllCards"
 
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/dashboard/allcards" element={<AllCards/>}/>
       <Route path="/dashboard/:id" element={<CardPage />} />
       <Route path="/select" element={<SelectUserType />} />
       <Route path="/login" element={<Login />} />
