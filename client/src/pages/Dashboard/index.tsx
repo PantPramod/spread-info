@@ -42,7 +42,8 @@ const Dashboard = () => {
     const submitHandler = async () => {
         try {
             const { data } = await axios.post(`${baseUrl}/api/info`, {
-                ...info, userId: id
+                ...info,
+                ...(id && { userId: id })
             })
             setLink(`${window.location.href}/${data._id}`)
             setShowMessage(true);
