@@ -8,7 +8,8 @@ const BusnissCardSchema = new mongoose.Schema({
     color:String,
     address:String,
     company:String,
-    userId:Schema.Types.ObjectId
+    userId:Schema.Types.ObjectId,
+    varient:String
 
 })
 

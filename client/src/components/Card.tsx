@@ -35,8 +35,8 @@ const Card = ({ info, OnClick }: propType) => {
 
         </div>,
         light: <div
-        onClick={OnClick}
-        style={{ background: `${info?.color}` }}   
+            onClick={OnClick}
+            style={{ background: `${info?.color}` }}
             className={`border border-dashed shadow-2xl mt-10 bg-white rounded-md  min-h-[200px] p-4 relative  md:w-[500px] mx-auto`} >
             <h1 className='text-center py-4 text-3xl text-blue-800 font-bold'>{info?.company}</h1>
 
@@ -52,9 +52,14 @@ const Card = ({ info, OnClick }: propType) => {
             </div>
         </div>
     }
+    console.log(info?.varient)
     return (
         <>
-            {varients[info?.varient ? info?.varient : "dark"]}
+            {info?.varient ?
+                varients[info?.varient]
+                :
+                varients.dark
+            }
         </>
     )
 }
