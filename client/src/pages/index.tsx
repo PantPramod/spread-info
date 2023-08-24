@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
-import { GlobalContext } from "./ContextProvider"
+import { GlobalContext } from "../components/ContextProvider"
 import { useContext } from 'react'
 
 
@@ -20,3 +20,15 @@ const index = () => {
 }
 
 export default index
+
+export {default as Login} from './Login'
+export {default as NotFound} from './NotFound'
+export {default as SelectUserType} from './SelectUserType'
+export {default as Signup} from './Signup'
+export {default as VerifyEmail} from './VerifyEmail'
+
+
+
+
+
+

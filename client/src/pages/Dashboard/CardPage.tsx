@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import baseUrl from "../baseUrl"
+import baseUrl from "../../baseUrl"
 import { useParams } from "react-router-dom"
 import axios from 'axios'
-import Card from "../components/Card"
+import Card from "../../components/Card"
 
 const CardPage = () => {
     const params = useParams();

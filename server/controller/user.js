@@ -2,20 +2,21 @@ import User from "../modal/User.js"
 import sendMail from '../helper/sendEmail.js'
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt'
+import asyncHandler from 'express-async-handler'
 
-const signup = async (req, res) => {
-    try {
+const signup =asyncHandler( async(req, res) => {
+    
         const { name, email, password } = req.body
 
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const  hashedPassword = await bcrypt.hash(password, 10);
 
-        const newUser = await User.create({
+        const  newUser = await User.create({
             name,
             email,
             password: hashedPassword,
             isEmailVerified: false,
             role: "user"
-        });
+        })
 
         const user = {
             id: newUser._id,
@@ -29,16 +30,12 @@ const signup = async (req, res) => {
 
         res.status(201).send("Verification Email Send To your Email ")
 
-    } catch (err) {
-        res.status(500)
-        res.send({ msg: "Error on Saving Data" })
 
-        // throw new Error("DB Error")
-    }
+})
 
-}
-const verifyEmail = async (req, res) => {
-    try {
+
+const verifyEmail =asyncHandler( async (req, res) => {
+
         const token = req.query.token
         if (!token) {
             res.status(401)
@@ -49,14 +46,11 @@ const verifyEmail = async (req, res) => {
         await User.findOneAndUpdate({ email: decoded.user.email }, { isEmailVerified: true })
         res.send("Email Is Verified")
 
-    } catch (err) {
-        // res.status(500)
-        // throw new Error("DB Error")
-    }
-}
 
-const login = async (req, res) => {
-    try {
+})
+
+const login =asyncHandler( async (req, res) => {
+
         const { email, password } = req.body;
 
         const response = await User.findOne({ email });
@@ -90,10 +84,8 @@ const login = async (req, res) => {
             token: token
         });
 
-    } catch (err) {
-
-    }
-}
+  
+})
 
 
 export { signup, verifyEmail, login }

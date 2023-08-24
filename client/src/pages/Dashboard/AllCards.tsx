@@ -3,7 +3,7 @@
 import axios from "axios"
 import { useContext, useEffect, useState } from "react"
 import baseUrl from "../../baseUrl"
-import { GlobalContext } from "../ContextProvider"
+import { GlobalContext } from "../../components/ContextProvider"
 import { useNavigate } from "react-router-dom"
 import Layout from "../../components/Layout"
 import Header from "../../components/Header"
@@ -29,7 +29,10 @@ const AllCards = () => {
       <Header name={name} />
       <div className='bg-emerald-900 min-h-screen pt-10 flex-col sm:flex-row  flex flex-wrap gap-x-8 gap-y-8 w-[90%] mx-auto'>
         {
-          allCards.map((card: any) => <Card info={card} OnClick={() => navigate(`/dashboard/${card._id}`)} />
+          allCards.map((card: any) => <Card 
+          info={card} 
+          OnClick={() => navigate(`/dashboard/${card._id}`)} 
+          />
 
           )
         }
