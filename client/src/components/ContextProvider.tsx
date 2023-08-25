@@ -33,19 +33,19 @@ const ContextProvider = ({ children }: propTypes) => {
         setId
     }
     useEffect(() => {
-        if (id) {
+      if(id!=null)
             localStorage.setItem("id", id)
-        }
+       
     }, [id])
     useEffect(() => {
-        if (name) {
+        if(name!=null)
             localStorage.setItem("name", name)
-        }
+   
     }, [name])
     useEffect(() => {
-        if (email) {
+            if(email!=null)        
             localStorage.setItem("email", email)
-        }
+      
     }, [email])
     return (
         <>
