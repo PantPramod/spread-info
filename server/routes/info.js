@@ -1,13 +1,15 @@
 import express from 'express'
 import BusinessCard from '../modal/BusinessCard.js'
 import asyncHandler from 'express-async-handler'
+import BirthDay from '../modal/BirthdayCard.js'
 
 const router = express.Router()
 
 
 router.get('/', asyncHandler(async (req, res) => {
     const allCards = await BusinessCard.find({})
-    res.send(allCards)
+    const allBirthdayCards = await BirthDay.find({})
+    res.send([...allCards, ...allBirthdayCards])
 }))
 
 router.get("/:id", asyncHandler(async (req, res) => {

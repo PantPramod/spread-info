@@ -18,6 +18,7 @@ import Dashboard,
   Resume,
   UploadedCard
 } from "./pages/Dashboard"
+import Greeting from "./pages/Dashboard/Greeting"
 
 
 const App = () => {
@@ -32,6 +33,7 @@ const App = () => {
       <Route path="/dashboard/uploaded-card" element={<UploadedCard />} />
       <Route path="/dashboard/resume" element={<Resume />} />
       <Route path="/dashboard/:id" element={<CardPage />} />
+      <Route path="/dashboard/greeting/:id" element={<Greeting />} />
       {!id &&
         <>
           <Route path="/select" element={<SelectUserType />} />

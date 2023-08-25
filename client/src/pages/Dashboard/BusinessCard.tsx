@@ -45,7 +45,7 @@ const BusinesssCard = () => {
         ...info,
         ...(id && { userId: id })
       })
-      setLink(`${window.location.href}/${data._id}`)
+      setLink(`${window.location.origin}/dashboard/${data._id}`)
       setShowMessage(true);
       console.log(data)
     } catch (err) {
