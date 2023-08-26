@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 import { useContext } from "react"
 import { GlobalContext } from "./components/ContextProvider"
+import './App.css'
 import Home,
 {
   Login,

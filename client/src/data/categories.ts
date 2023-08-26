@@ -1,4 +1,9 @@
-import { greeting, business, resume, uploaded } from '../assets'
+import {
+    greeting,
+    business,
+    resume,
+    // uploaded 
+} from '../assets'
 
 const categories = [
     {
@@ -11,11 +16,11 @@ const categories = [
         url: greeting,
         redirect: "/dashboard/greeting-card"
     },
-    {
-        title: "Uploaded Card",
-        url: uploaded,
-        redirect: "/dashboard/uploaded-card"
-    },
+    // {
+    //     title: "Uploaded Card",
+    //     url: uploaded,
+    //     redirect: "/dashboard/uploaded-card"
+    // },
     {
         title: "Resume",
         url: resume,

@@ -1,0 +1,6 @@
+.triangle-up-left {
+    width: 0;
+    height: 0;
+    border-top: 200px solid rgb(204, 177, 25);
+    border-right: 400px solid transparent;
+  }
