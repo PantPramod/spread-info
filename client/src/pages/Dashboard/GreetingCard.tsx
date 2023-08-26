@@ -36,9 +36,13 @@ const GreetingCard = () => {
   }
   return (
     <Layout>
-      <Header name={name} />
+      <Header 
+      name={name}
+      nav1="/dashboard/greeting-card"
+      nav2="/dashboard/greeting-card/allcards"
+      />
       <div className="flex h-[calc(100vh-72px)]">
-        <div className="w-[300px] bg-emerald-700 overflow-y-auto">
+        <div className="w-[300px] bg-emerald-700 overflow-y-auto custom-scroll">
           <div
             onClick={() => setInfo({...info, no:1})}
             className="mt-5 cursor-pointer">
@@ -61,7 +65,7 @@ const GreetingCard = () => {
             <p className="text-center text-white mt-2">Animation Greeting</p>
           </div>
         </div>
-        <div className="flex-1 flex flex-col items-center justify-center bg-no-repeat container1">
+        <div className="flex-1 flex flex-col items-center justify-center bg-no-repeat ">
           {/* <div className="bg-white w-[500px] h-[300px] rounded-tl-[50px]"></div> */}
           {
             info.no === 1 &&

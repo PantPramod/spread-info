@@ -30,6 +30,13 @@ const Greeting = () => {
     return (
         <div className="flex min-h-screen items-center justify-center bg-emerald-900">
             {
+                !info?.no &&
+                    <BirthdayCard1
+                    info={info}
+                    setInfo={setInfo}
+                />
+            }
+            {
                 info?.no===1 &&
                     <BirthdayCard1
                     info={info}

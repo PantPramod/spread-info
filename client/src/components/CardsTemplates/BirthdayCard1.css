@@ -1,17 +1,4 @@
-.container1 {
-  background-image: linear-gradient(
-    to right top,
-    #1f0537,
-    #380c60,
-    #55108c,
-    #7413bb,
-    #9612eb
-  );
-  height: 100%;
-  margin: 0;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
+
 
 .card {
   position: relative;

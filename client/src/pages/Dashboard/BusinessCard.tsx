@@ -65,7 +65,7 @@ const BusinesssCard = () => {
         name={name}
       />
       <div className='flex w-full  h-[88vh] '>
-        <div className='w-[300px] bg-emerald-800 overflow-x-hidden p-4 overflow-y-auto'>
+        <div className='w-[300px] bg-emerald-800 overflow-x-hidden p-4 overflow-y-auto custom-scroll'>
           <div className='flex justify-between items-center relative'>
             <p className='text-gray-200 mb-2'>{name}'s Dashboard</p>
             <button

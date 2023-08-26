@@ -12,15 +12,16 @@ const Category = ({ category }: propTypes) => {
     const navigation = useNavigate()
     return (
         <div
-            className='mt-4 cursor-pointer'
+            className='mt-4 '
             key={category.title}
-            onClick={() => navigation(category.redirect)}
+
         >
             <img
+                onClick={() => navigation(category.redirect)}
                 src={category.url}
                 alt={category.url}
-                className='' />
-            <p className='text-center text-white'>{category.title}</p>
+                className='cursor-pointer w-full h-[200px] object-cover hover:scale-105 transition-all ease-in-out duration-300' />
+            <p className='text-center text-white mt-4'>{category.title}</p>
         </div>
     )
 }

@@ -14,17 +14,23 @@ const Dashboard = () => {
                 name={name}
                 page="dashboard"
             />
-            <div className='flex w-full  h-[88vh] '>
-                <div className='w-[300px] bg-emerald-800 overflow-x-hidden p-4 overflow-y-auto custom-scroll'>
-                    <p className='text-white  '>Categoies</p>
-                    {categories.map((category) => <Category category={category} />)}
-
+            {/* <div className='flex w-full  h-[88vh] '> */}
+            <div className='p-4 overflow-y-auto custom-scroll h-[calc(100vh-72px)]'>
+                <p className='text-white  '>Categoies</p>
+                <div className='flex flex-wrap justify-between w-full'>
+                    {categories.map((category) =>
+                        <div className='w-[30%] '>
+                            <Category category={category} />
+                        </div>
+                    )}
                 </div>
-                <div className='flex-1 h-full flex items-center justify-center'>
+
+            </div>
+            {/* <div className='flex-1 h-full flex items-center justify-center'>
                     <h1 className="font-[400]  class1 text-gray-400 text-6xl leading-[150%] text-center max-w-[500px]">
                         Create Your Custom Card And Share with your Friends...</h1>
-                </div>
-            </div>
+                </div> */}
+            {/* </div> */}
         </Layout>
     )
 }

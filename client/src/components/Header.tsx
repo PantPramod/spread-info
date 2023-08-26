@@ -7,9 +7,11 @@ import { useContext, useState } from 'react'
 
 type propType = {
     name: string | null,
-    page?: string
+    page?: string,
+    nav1?:string,
+    nav2?:string
 }
-const Header = ({ name, page }: propType) => {
+const Header = ({ name, page, nav1, nav2 }: propType) => {
     const { setEmail, setId, setName } = useContext(GlobalContext)
     const [show, setShow] = useState(false)
     const logout = () => {
@@ -23,7 +25,7 @@ const Header = ({ name, page }: propType) => {
         <header className='relative p-4 bg-emerald-900  flex w-full justify-end items-center gap-x-8'>
             {
                 page !== "dashboard" &&
-                <Link to="/dashboard/business-card">
+                <Link to={nav1||"/dashboard/business-card"}>
                     <BsPlusSquareFill color="white" size={22} />
                 </Link>
             }
@@ -31,7 +33,7 @@ const Header = ({ name, page }: propType) => {
                 <>
                     {
                         page !== "dashboard" &&
-                        <Link to="/dashboard/allcards">
+                        <Link to={nav2||"/dashboard/allcards"}>
                             <FaRegRectangleList color="white" size={22} />
                         </Link>
                     }
