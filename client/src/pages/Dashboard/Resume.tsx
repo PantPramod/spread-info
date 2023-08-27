@@ -1,52 +1,25 @@
-import {  useContext, useState } from "react"
+import { useContext, useState } from "react"
 import Header from "../../components/Header"
 import Layout from "../../components/Layout"
 import { GlobalContext } from "../../components/ContextProvider"
-import { IoMdContact, IoMdCall} from 'react-icons/io'
-import { MdEmail } from 'react-icons/md'
-import { AiFillGithub, AiFillProject } from 'react-icons/ai'
-import { BsLinkedin } from 'react-icons/bs'
+import { IoMdContact } from 'react-icons/io'
+import { AiFillProject } from 'react-icons/ai'
 import { RiGraduationCapFill } from 'react-icons/ri'
 import { BsPersonCircle } from 'react-icons/bs'
 import { GiSkills } from 'react-icons/gi'
 import { FaSuitcase } from 'react-icons/fa'
 import axios from "axios"
 import baseUrl from "../../baseUrl"
+import { ContactInfoType, educationInterface, experienceInterface, projectsInterface, skillsInterface } from "../../helper/types"
+import { labelToIcon, options } from "../../helper/resumehelper"
 
-interface ContactInfoType {
-  type: "phone" | "email" | "github" | "linkedin",
-  value: string,
-  open: boolean
-}
-interface educationInterface {
-  college: string,
-  course: string,
-  startingYear: string,
-  endingYear: string
-}
-interface skillsInterface {
-  heading: string,
-  text: string
-}
 
-interface experienceInterface {
-  role: string,
-  company: string,
-  description: string,
-  duration: string
-}
-
-interface projectsInterface {
-  title: string,
-  technologies: string,
-  description: string
-}
 
 const Resume = () => {
   const { name, id } = useContext(GlobalContext);
   const [contactInfo, setContactInfo] = useState<ContactInfoType[]>([
     {
-      type: "email",
+      types: "email",
       value: '',
       open: false,
     }
@@ -56,13 +29,13 @@ const Resume = () => {
     college: '',
     course: '',
     startingYear: '',
-    endingYear: ''
+    exitYear: ''
   }])
 
   const [skills, setSkills] = useState<skillsInterface[]>([
     {
-      heading: '',
-      text: ''
+      headings: '',
+      texts: ''
     }
   ])
 
@@ -84,10 +57,13 @@ const Resume = () => {
   const [projects, setProjects] = useState<projectsInterface[]>([
     {
       title: "",
-      technologies: "",
+      technology: "",
       description: ""
     }
   ])
+
+  const [link, setLink] = useState('')
+  const [show, setShow] = useState(false)
 
 
 
@@ -96,7 +72,7 @@ const Resume = () => {
     for (let i = 0; i < contactInfo.length; i++) {
       arr.push(
         {
-          types: contactInfo[i]?.type,
+          types: contactInfo[i]?.types,
           value: contactInfo[i]?.value
         }
       )
@@ -116,6 +92,8 @@ const Resume = () => {
       const { data } = await axios.post(`${baseUrl}/api/resume`, {
         ...resumeData,
       })
+      setLink(`${window.location.origin}/dashboard/resume/${data._id}`)
+      setShow(true);
       console.log(data)
     } catch (err) {
     }
@@ -131,7 +109,6 @@ const Resume = () => {
       <div className=" bg-white max-w-[900px] mx-auto  flex ">
         <div className="w-[400px] flex-0 bg-black self-stretch">
           <div className="triangle-up-left"></div>
-
           <div className="border-l  ml-4  border-l-[#ccb119] relative ">
             <div className="flex items-center">
               <div className="bg-[#ccb119] rounded-2xl w-2 h-10 absolute -left-1"></div>
@@ -155,7 +132,7 @@ const Resume = () => {
                     <span onClick={() => {
                       contactInfo[index] = { ...contactInfo[index], open: !contactInfo[index].open }
                       setContactInfo([...contactInfo])
-                    }}>{labelToIcon[contact.type]}</span>
+                    }}>{labelToIcon[contact.types]}</span>
                     {
                       contactInfo[index].open
                       &&
@@ -163,7 +140,7 @@ const Resume = () => {
                         {
                           options.map((opt) => (<div
                             onClick={() => {
-                              contactInfo[index] = { type: opt.value, value: contact.value, open: false }
+                              contactInfo[index] = { types: opt.value, value: contact.value, open: false }
                               setContactInfo([...contactInfo])
                             }}
                             className=" hover:bg-[#353333f3] cursor-pointer py-2 flex justify-center">
@@ -180,7 +157,7 @@ const Resume = () => {
                     className="ml-2 bg-transparent outline-none  self-start w-full"
                     value={contactInfo[index].value}
                     onChange={(e) => {
-                      contactInfo[index] = { type: contact.type, value: e.target.value, open: false }
+                      contactInfo[index] = { types: contact.types, value: e.target.value, open: false }
                       setContactInfo([...contactInfo])
                     }}
                   />
@@ -188,7 +165,7 @@ const Resume = () => {
                     <button
                       className="self-start mr-2"
                       onClick={() => {
-                        contactInfo.push({ type: "email", value: "", open: false })
+                        contactInfo.push({ types: "email", value: "", open: false })
                         setContactInfo([...contactInfo])
                       }}>+</button>
                   }
@@ -210,7 +187,6 @@ const Resume = () => {
               education.map((edu, index) => <div className="mt-3 flex ">
                 <div className="bg-[#ccb119] rounded-2xl w-2 h-2 absolute -left-1 mt-2"></div>
                 <div className="text-white ml-6 ">
-                  {/* <p className="font-bold">STANFORD UNIVERSITY</p> */}
                   <input
                     type="text"
                     className="font-bold bg-transparent outline-none"
@@ -247,9 +223,9 @@ const Resume = () => {
                       type="text"
                       className="bg-transparent outline-none w-[55px]"
                       placeholder="2019"
-                      value={education[index].endingYear}
+                      value={education[index].exitYear}
                       onChange={(e) => {
-                        education[index] = { ...education[index], endingYear: e.target.value }
+                        education[index] = { ...education[index], exitYear: e.target.value }
                         setEducation([...education])
                       }}
                     /></p>
@@ -261,7 +237,7 @@ const Resume = () => {
                       education.push({
                         college: "",
                         course: "",
-                        endingYear: "",
+                        exitYear: "",
                         startingYear: ""
                       })
                       setEducation([...education])
@@ -290,9 +266,9 @@ const Resume = () => {
                       type="text"
                       className="bg-transparent outline-none w-full font-bold"
                       placeholder="Frontend"
-                      value={skill.heading}
+                      value={skill.headings}
                       onChange={(e) => {
-                        skills[index] = { ...skills[index], heading: e.target.value }
+                        skills[index] = { ...skills[index], headings: e.target.value }
                         setSkills([...skills])
                       }}
                     />
@@ -300,9 +276,9 @@ const Resume = () => {
                       type="text"
                       className="bg-transparent outline-none w-full "
                       placeholder="HTML, CSS, JS, React JS, Next JS, Redux"
-                      value={skills[index].text}
+                      value={skills[index].texts}
                       onChange={(e) => {
-                        skills[index] = { ...skills[index], text: e.target.value }
+                        skills[index] = { ...skills[index], texts: e.target.value }
                         setSkills([...skills])
                       }}
                     />
@@ -313,8 +289,8 @@ const Resume = () => {
                       className=" mr-2 text-white self-end ml-4"
                       onClick={() => {
                         skills.push({
-                          heading: "",
-                          text: ""
+                          headings: "",
+                          texts: ""
                         })
                         setSkills([...skills])
                       }}>+</button>
@@ -326,9 +302,7 @@ const Resume = () => {
 
         </div>
         <div className="flex-1 ">
-
           <div className=" relative pt-20 ml-8 min-h-screen w-[calc(100%-32px)] border-l border-l-[#000000] h-full">
-
             <div className="flex items-center w-full bg-gray-200">
               <div className="bg-[#ccb119] rounded-2xl w-2 h-20 absolute -left-1 "></div>
               <div className="">
@@ -481,9 +455,9 @@ const Resume = () => {
                       type="text"
                       className="bg-transparent outline-none w-full "
                       placeholder="React JS, Redux, Node JS, MongoDB"
-                      value={projects[index].technologies}
+                      value={projects[index].technology}
                       onChange={(e) => {
-                        projects[index] = { ...projects[index], technologies: e.target.value }
+                        projects[index] = { ...projects[index], technology: e.target.value }
                         setProjects([...projects])
                       }}
                     />
@@ -506,61 +480,44 @@ const Resume = () => {
                       onClick={() => {
                         projects.push({
                           description: "",
-                          technologies: "",
+                          technology: "",
                           title: ""
                         })
                         setExperience([...experience])
                       }}>+</button>
                   }
-
                 </div>))
               }
-
             </div>
           </div>
         </div>
-
       </div>
-
       <button
         onClick={submitHandler}
         className='mt-10 block mx-auto border px-8 py-2 rounded-md  text-sm text-white'
       >Publish</button>
-
       <div className="pb-20"></div>
+
+      {show &&
+
+        <div
+          onClick={() => setShow(false)}
+          className='fixed top-0 left-0 right-0 bottom-0 bg-[#00000069] flex items-center justify-center z-[99999]'>
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className='w-[90%] sm:w-[400px] bg-black text-white rounded-xl tex-white p-6'>
+            <h2>Your Link is</h2>
+            <p className='mt-4 text-xs'>{link}</p>
+
+            <button onClick={() => { navigator.clipboard.writeText(link); }} className='mx-auto  block py-2  mt-5 bg-green-600 text-white rounded-md p-3'>Copy</button>
+
+          </div>
+        </div>
+      }
+
     </Layout>
   )
 }
 
 export default Resume
 
-type optionType = {
-  value: "phone" | "email" | "github" | "linkedin",
-  icon: any
-}
-
-const options: optionType[] = [
-  {
-    value: "phone",
-    icon: <IoMdCall />
-  },
-  {
-    value: "email",
-    icon: <MdEmail />
-  },
-  {
-    value: "github",
-    icon: <AiFillGithub />
-  },
-  {
-    value: "linkedin",
-    icon: <BsLinkedin />
-  }
-]
-
-const labelToIcon = {
-  phone: <IoMdCall />,
-  email: <MdEmail />,
-  github: <AiFillGithub />,
-  linkedin: <BsLinkedin />
-}

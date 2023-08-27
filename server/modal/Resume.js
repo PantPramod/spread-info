@@ -16,10 +16,12 @@ const ResumeSchema = new mongoose.Schema({
             exitYear: String
         }
     ],
-    skills: {
-        heading: String,
-        text: String
-    },
+    skills: [
+        {
+            headings: String,
+            texts: String
+        }
+    ],
     name: String,
     role: String,
     about: String,
@@ -29,12 +31,15 @@ const ResumeSchema = new mongoose.Schema({
             company: String,
             description: String,
             duration: String
-        }],
-    projects: [{
-        title: String,
-        technology: String,
-        description: String
-    }],
+        }
+    ],
+    projects: [
+        {
+            title: String,
+            technology: String,
+            description: String
+        }
+    ],
     userId: Schema.Types.ObjectId,
 })
 
