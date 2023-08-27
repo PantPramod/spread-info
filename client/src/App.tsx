@@ -42,7 +42,6 @@ const App = () => {
       {!id &&
         <>
           <Route path="/select" element={<SelectUserType />} />
-
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </>

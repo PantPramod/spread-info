@@ -11,7 +11,6 @@ const VerifyEmail = () => {
 
     useEffect(() => {
         const token = searchParams.get('token')
-
         if (token) {
             (async () => {
                 const { data } = await axios.get(`${baseUrl}/api/user/verifyemail?token=${token}`)
@@ -24,14 +23,13 @@ const VerifyEmail = () => {
     }, [])
     return (
         <div className="bg-emerald-900 text-white flex items-center justify-center min-h-screen  ">
-            <ToastContainer/>
+            <ToastContainer />
             {
                 isEmailVerified &&
-                <Link to="/login"> 
-                <button className="bg-red-600 text-white px-8 py-4 text-xl">Login</button>
+                <Link to="/login">
+                    <button className="bg-red-600 text-white px-8 py-4 text-xl">Login</button>
                 </Link>
             }
-
         </div>
     )
 }

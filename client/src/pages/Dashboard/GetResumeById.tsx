@@ -17,9 +17,7 @@ const GetResumeById = () => {
                 console.log("resume data", data)
                 setResume({ ...data })
             })()
-
         }
-
     }, [id])
   return (
     <Layout>
@@ -28,7 +26,6 @@ const GetResumeById = () => {
         resume &&
         <Resume1 resume={resume}/>
       }  
-     
     </Layout>
   )
 }

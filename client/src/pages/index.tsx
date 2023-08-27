@@ -9,7 +9,6 @@ const index = () => {
   return (
     <div className="bg-emerald-900 text-white min-h-screen flex items-center justify-center flex-col">
       <p className=" text-xl">Create Your Business Card</p>
-
       <Link to={id ? "/dashboard" : '/select'}>
         <motion.button
           whileHover={{ scale: 1.05 }}

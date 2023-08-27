@@ -22,8 +22,8 @@ const Signup = () => {
         } catch (err) {
             console.log(err)
         }
-
     }
+    
     return (
         <form onSubmit={submitHandler} className="bg-emerald-950 text-gray-300 min-h-screen">
             <ToastContainer />

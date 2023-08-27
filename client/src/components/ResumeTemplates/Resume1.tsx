@@ -77,7 +77,9 @@ const Resume1 = ({ resume }: propType) => {
                         </div>
                         {
                             resume?.skills?.map((skill:skillsInterface, index:number) =>
-                                <div className={`${index === 0 ? "mt-10" : "mt-3"} flex `}>
+                                <div 
+                                key={skill?._id}
+                                className={`${index === 0 ? "mt-10" : "mt-3"} flex `}>
                                     <div className="bg-[#ccb119] rounded-2xl w-2 h-2 absolute -left-1 mt-2"></div>
                                     <div className="text-white ml-6 ">
                                         <p className="font-bold">{skill?.headings}</p>
@@ -143,7 +145,8 @@ const Resume1 = ({ resume }: propType) => {
                                     Projects</p>
                             </div>
                             {
-                                resume?.projects?.map((project:projectsInterface, index:number) => <div className={`${index === 0 ? "mt-10" : "mt-3"}`} key={project?._id}>
+                                resume?.projects?.map((project:projectsInterface, index:number) => <div className={`${index === 0 ? "mt-10" : "mt-3"}`} 
+                                key={project?._id}>
                                     <p className=" flex justify-between font-bold">
                                         {project?.title}
                                     </p>

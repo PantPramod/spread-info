@@ -23,16 +23,13 @@ const CardPage = () => {
                 console.log("card page", data)
                 setInfo({ ...data })
             })()
-
         }
-
     }, [id])
     return (
         <div className="flex min-h-screen items-center justify-center bg-emerald-900">
             {
                 info?.name && <Card info={info} />
-            }    
-            
+            }
         </div>
     )
 }

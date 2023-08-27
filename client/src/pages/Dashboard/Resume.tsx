@@ -24,27 +24,23 @@ const Resume = () => {
       open: false,
     }
   ])
-
   const [education, setEducation] = useState<educationInterface[]>([{
     college: '',
     course: '',
     startingYear: '',
     exitYear: ''
   }])
-
   const [skills, setSkills] = useState<skillsInterface[]>([
     {
       headings: '',
       texts: ''
     }
   ])
-
   const [basicInfo, setBasicInfo] = useState({
     name: "",
     role: "",
     about: "",
   })
-
   const [experience, setExperience] = useState<experienceInterface[]>([
     {
       company: "",
@@ -53,7 +49,6 @@ const Resume = () => {
       role: "",
     }
   ])
-
   const [projects, setProjects] = useState<projectsInterface[]>([
     {
       title: "",
@@ -61,11 +56,8 @@ const Resume = () => {
       description: ""
     }
   ])
-
   const [link, setLink] = useState('')
   const [show, setShow] = useState(false)
-
-
 
   const submitHandler = async () => {
     let arr = []
@@ -77,7 +69,6 @@ const Resume = () => {
         }
       )
     }
-
     const resumeData = {
       contactInfo: arr,
       education,
@@ -87,7 +78,6 @@ const Resume = () => {
       ...basicInfo,
       ...(id && { userId: id })
     }
-
     try {
       const { data } = await axios.post(`${baseUrl}/api/resume`, {
         ...resumeData,
@@ -120,7 +110,6 @@ const Resume = () => {
                 />
                 Contact Me</p>
             </div>
-
             {
               contactInfo.map((contact, index) => <div
                 key={index}
@@ -128,7 +117,6 @@ const Resume = () => {
                 <div className="bg-[#ccb119] rounded-2xl w-2 h-2 absolute -left-1"></div>
                 <p className="text-white ml-6 flex w-full">
                   <div className="relative self-center shadow-sm shadow-white">
-
                     <span onClick={() => {
                       contactInfo[index] = { ...contactInfo[index], open: !contactInfo[index].open }
                       setContactInfo([...contactInfo])
@@ -172,7 +160,6 @@ const Resume = () => {
                 </p>
               </div>)
             }
-
             <div className="mt-20 flex items-center">
               <div className="bg-[#ccb119] rounded-2xl w-2 h-10 absolute -left-1"></div>
               <p className="text-white ml-6 text-xl uppercase font-bold">
@@ -245,8 +232,6 @@ const Resume = () => {
                 }
               </div>)
             }
-
-
             <div className="mt-20 flex items-center">
               <div className="bg-[#ccb119] rounded-2xl w-2 h-10 absolute -left-1"></div>
               <p className="text-white ml-6 text-xl uppercase font-bold">
@@ -282,7 +267,6 @@ const Resume = () => {
                         setSkills([...skills])
                       }}
                     />
-
                   </div>
                   {index == skills.length - 1 &&
                     <button
@@ -299,7 +283,6 @@ const Resume = () => {
               )
             }
           </div>
-
         </div>
         <div className="flex-1 ">
           <div className=" relative pt-20 ml-8 min-h-screen w-[calc(100%-32px)] border-l border-l-[#000000] h-full">
@@ -327,7 +310,6 @@ const Resume = () => {
                 </p>
               </div>
             </div>
-
             <div className="px-5 flex items-center w-full relative ">
               <div className="bg-[#ccb119] rounded-2xl w-2 h-14 absolute -left-1 top-0 self-start mt-7"></div>
               <div className="w-full ">
@@ -356,7 +338,6 @@ const Resume = () => {
                 Job Experience</p>
               {
                 experience.map((exp, index) => <div className="">
-
                   <p className="mt-4 flex justify-between ">
                     <span className="font-bold">
                       <input
@@ -423,7 +404,6 @@ const Resume = () => {
                 </div>)
               }
             </div>
-
             <div className="px-5">
               <div className="bg-[#ccb119] rounded-2xl w-2 h-14 absolute -left-1 mt-10 self-start"></div>
               <div className="mt-20">
@@ -437,7 +417,6 @@ const Resume = () => {
               {
                 projects.map((proj, index) => (<div className="">
                   <p className="mt-3 flex justify-between font-bold">
-
                     <input
                       type="text"
                       className="bg-transparent outline-none w-full "
@@ -497,9 +476,7 @@ const Resume = () => {
         className='mt-10 block mx-auto border px-8 py-2 rounded-md  text-sm text-white'
       >Publish</button>
       <div className="pb-20"></div>
-
       {show &&
-
         <div
           onClick={() => setShow(false)}
           className='fixed top-0 left-0 right-0 bottom-0 bg-[#00000069] flex items-center justify-center z-[99999]'>
@@ -508,13 +485,10 @@ const Resume = () => {
             className='w-[90%] sm:w-[400px] bg-black text-white rounded-xl tex-white p-6'>
             <h2>Your Link is</h2>
             <p className='mt-4 text-xs'>{link}</p>
-
             <button onClick={() => { navigator.clipboard.writeText(link); }} className='mx-auto  block py-2  mt-5 bg-green-600 text-white rounded-md p-3'>Copy</button>
-
           </div>
         </div>
       }
-
     </Layout>
   )
 }

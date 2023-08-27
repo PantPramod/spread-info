@@ -15,13 +15,11 @@ const AllCards = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-
     (async () => {
       const { data } = await axios.get(`${baseUrl}/api/info/userid/${id}`)
       console.log(data)
       setAllCards([...data])
     })()
-
   }, [])
 
   return (
@@ -29,11 +27,10 @@ const AllCards = () => {
       <Header name={name} />
       <div className='bg-emerald-900 min-h-screen pt-10 flex-col sm:flex-row  flex flex-wrap gap-x-8 gap-y-8 w-[90%] mx-auto'>
         {
-          allCards.map((card: any) => <Card 
-          info={card} 
-          OnClick={() => navigate(`/dashboard/${card._id}`)} 
+          allCards.map((card: any) => <Card
+            info={card}
+            OnClick={() => navigate(`/dashboard/${card._id}`)}
           />
-
           )
         }
       </div>

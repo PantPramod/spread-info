@@ -14,7 +14,6 @@ const Greeting = () => {
     const [info, setInfo] = useState({
         name: '',
         no: 0
-
     })
     useEffect(() => {
         if (id) {
@@ -23,9 +22,7 @@ const Greeting = () => {
                 console.log("card page", data)
                 setInfo({ ...data })
             })()
-
         }
-
     }, [id])
     return (
         <div className="flex min-h-screen items-center justify-center bg-emerald-900">
@@ -50,7 +47,6 @@ const Greeting = () => {
                     setInfo={setInfo}
                 />
             }
-
         </div>
     )
 }
